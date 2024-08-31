@@ -25,8 +25,8 @@ public class ClienteController {
     public ResponseEntity<String> registrarCliente(@RequestBody Cliente cliente) {
         
         try {
-            this.clienteService.registrarCliente(cliente);
-            return ResponseEntity.ok().build();
+            String message = this.clienteService.registrarCliente(cliente);
+            return ResponseEntity.ok(message);
         } catch (RuntimeException rte) {
             return ResponseEntity.badRequest().build();
         }
