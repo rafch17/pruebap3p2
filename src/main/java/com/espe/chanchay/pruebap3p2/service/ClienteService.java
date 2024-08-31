@@ -22,9 +22,10 @@ public class ClienteService {
     }
 
     public String registrarCliente(Cliente cliente) {
-
+        log.info("creando cliente con cedula: ",cliente.getCedula());
         try {
             if (clienteRepository.existsById(cliente.getCedula())) {
+                log.info("Cliente registrado");
                 return "El cliente ya está registrado";
             }
 
@@ -47,6 +48,7 @@ public class ClienteService {
             }
 
             clienteRepository.save(cliente);
+            log.info("Cliente registrado exitosamente");
             return "Cliente registrado exitosamente";
         } catch (Exception e) {
             log.error("Error al guardar el producto", e);
