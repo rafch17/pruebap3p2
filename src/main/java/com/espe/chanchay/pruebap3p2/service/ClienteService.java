@@ -16,9 +16,9 @@ public class ClienteService {
     private final ClientRepository clienteRepository;
     private final WebClient webClient;
 
-    public ClienteService(ClientRepository clienteRepository, WebClient webClient) {
+    public ClienteService(ClientRepository clienteRepository, WebClient.Builder webClientBuilder) {
         this.clienteRepository = clienteRepository;
-        this.webClient = webClient;
+        this.webClient = webClientBuilder.build();
     }
 
     public String registrarCliente(Cliente cliente) {
