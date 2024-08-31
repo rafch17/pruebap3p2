@@ -30,6 +30,7 @@ public class ClienteService {
             }
 
             String apiUrl = "http://localhost:8080/api/v1/listaNegra";
+            log.info("Consultando servicio externo");
 
             Integer porcentajeOcurrencia = webClient.get()
                     .uri(uriBuilder -> uriBuilder
@@ -42,7 +43,7 @@ public class ClienteService {
                     .retrieve()
                     .bodyToMono(Integer.class)
                     .block();
-
+                    log.info("incurrencia: "+porcentajeOcurrencia);
             if (porcentajeOcurrencia != null && porcentajeOcurrencia >= 60) {
                 return "Cliente no permitido: porcentaje de ocurrencia en listas negras es " + porcentajeOcurrencia;
             }
